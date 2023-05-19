@@ -113,7 +113,7 @@ String LoRaMeshService::getRoutingTable() {
     String routingTable = "--- Routing Table ---\n";
 
     //Set the routing table list that is being used and cannot be accessed (Remember to release use after usage)
-    LM_LinkedList<RouteNode>* routingTableList = radio.routingTableList();
+    LM_LinkedList<RouteNode>* routingTableList = radio.routingTableListCopy();
 
     routingTableList->setInUse();
 
@@ -129,7 +129,7 @@ String LoRaMeshService::getRoutingTable() {
     }
 
     //Release routing table list usage.
-    routingTableList->releaseInUse();
+    routingTableList->Clear();
 
     return routingTable;
 }
