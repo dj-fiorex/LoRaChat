@@ -15,7 +15,7 @@
 
 #include "LoraMesher.h"
 
-#include "sensor/temperature.h"
+#include "sensor/temperature-onewire/temperature.h"
 
 class Sim: public MessageService {
 public:

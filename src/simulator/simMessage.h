@@ -54,7 +54,7 @@ public:
     void serializePacketHeader(JsonObject& doc) {
         doc["Type"] = state.packetHeader.type;
         doc["Id"] = state.packetHeader.id;
-        doc["Size"] = state.packetHeader.payloadSize;
+        doc["Size"] = state.packetHeader.getPacketLength();
         doc["Src"] = state.packetHeader.src;
         doc["Dst"] = state.packetHeader.dst;
         doc["Via"] = state.packetHeader.via;
