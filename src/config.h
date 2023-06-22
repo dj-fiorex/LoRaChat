@@ -70,3 +70,9 @@
 
 // If defined, there only be one sender
 #define ONE_SENDER 20068
+
+// Pump service
+#define PUMP_ENABLED
+#define PUMP_PIN_READ 10
+#define PUMP_PIN_WRITE 10
+

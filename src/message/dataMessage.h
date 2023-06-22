@@ -29,7 +29,8 @@ enum appPort: uint8_t {
     TemperatureSensorApp = 9,
     LedApp = 10,
     Dht22SensorApp = 11,
-    SimApp = 12
+    SimApp = 12,
+    PumpApp = 13
 };
 
 class DataMessageGeneric {

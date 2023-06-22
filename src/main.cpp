@@ -49,6 +49,18 @@ void initSimulator() {
 
 #endif
 
+#ifdef PUMP_ENABLED
+
+#include "pump/pump.h"
+
+Pump& pump = Pump::getInstance();
+
+void initPump() {
+    pump.init();
+}
+
+#endif
+
 #pragma region Led
 
 Led& led = Led::getInstance();
@@ -131,6 +143,11 @@ void initManager() {
 #ifdef SIMULATION_ENABLED
     manager.addMessageService(&simulator);
     Log.verboseln("Simulator service added to manager");
+#endif
+
+#ifdef PUMP_ENABLED
+    manager.addMessageService(&pump);
+    Log.verboseln("Pump service added to manager");
 #endif
 
     Serial.println(manager.getAvailableCommands());
@@ -240,6 +257,11 @@ void setup() {
 #ifdef SIMULATION_ENABLED
     // Initialize Simulator
     initSimulator();
+#endif
+
+#ifdef PUMP_ENABLED
+    // Initialize Pump
+    initPump();
 #endif
 
     // Blink 2 times to show that the device is ready
