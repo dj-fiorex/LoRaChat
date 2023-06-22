@@ -3,7 +3,6 @@
 #include <Arduino.h>
 
 #include <WiFiClientSecure.h>
-//#include <WiFiClient.h>
 
 #include <MQTT.h>
 
@@ -22,7 +21,7 @@
 // TODO: Check for wake from sleep mode.
 // TODO: Check for max characters in a message to avoid buffer overflow.
 
-class MqttService : public MessageService {
+class MqttService: public MessageService {
 public:
     /**
      * @brief Construct a new BluetoothService object
@@ -46,8 +45,11 @@ public:
     bool writeToMqtt(DataMessage* message);
     bool writeToMqtt(String message);
 
-    // WiFiClientSecure net;
+#if MQTT_SECURE == true
+    WiFiClientSecure net;
+#else
     WiFiClient net;
+#endif
 
     MQTTClient* client = new MQTTClient(MQTT_MAX_PACKET_SIZE);
 
@@ -56,7 +58,7 @@ public:
     virtual void processReceivedMessage(messagePort port, DataMessage* message);
 
 private:
-    MqttService() : MessageService(appPort::MQTTApp, String("MQTT")) {
+    MqttService(): MessageService(appPort::MQTTApp, String("MQTT")) {
         commandService = mqttCommandService;
         mqttSemaphore = xSemaphoreCreateBinary();
         xSemaphoreGive(mqttSemaphore);

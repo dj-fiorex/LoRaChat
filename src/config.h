@@ -6,8 +6,8 @@
 #define MAX_CONNECTION_TRY 10
 
 // WiFi credentials
-#define WIFI_SSID "Fibracat_21123"
-#define WIFI_PASSWORD "85392c7e38"
+#define WIFI_SSID "****"
+#define WIFI_PASSWORD "****"
 
 // MQTT configuration
 #define MQTT_SERVER "192.168.1.11"
@@ -19,6 +19,7 @@
 #define MQTT_MAX_PACKET_SIZE 512 // 128, 256 or 512
 #define MQTT_MAX_QUEUE_SIZE 10
 #define MQTT_STILL_CONNECTED_INTERVAL 30000 // 30 seconds
+#define MQTT_SECURE false
 
 //Logging Configuration
 // #define DISABLE_LOGGING
