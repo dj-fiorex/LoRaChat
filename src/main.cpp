@@ -33,6 +33,7 @@
 
 #endif
 
+#ifdef SIMULATOR_ENABLED
 // Simulator
 #include "simulator/sim.h"
 
@@ -45,6 +46,8 @@ void initSimulator() {
     simulator.init();
 }
 #pragma endregion
+
+#endif
 
 #pragma region Led
 
