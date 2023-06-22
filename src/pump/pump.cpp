@@ -99,6 +99,9 @@ AckPumpMessage* Pump::getAckPumpMessage(PumpCommand ackCommand, uint8_t id) {
     ackPumpMessage->addrDst = 0;
     ackPumpMessage->messageId = id;
 
+    ackPumpMessage->ackCommand = ackCommand;
+    ackPumpMessage->pumpCommand = AckMessage;
+
     ackPumpMessage->messageSize = sizeof(AckPumpMessage) - sizeof(DataMessageGeneric);
 
     return ackPumpMessage;
