@@ -14,7 +14,7 @@
 
 #include "loraMeshCommandService.h"
 
-class LoRaMeshService : public MessageService {
+class LoRaMeshService: public MessageService {
 
 public:
 
@@ -55,7 +55,7 @@ private:
 
     TaskHandle_t receiveLoRaMessage_Handle = NULL;
 
-    LoRaMeshService() : MessageService(appPort::LoRaMesherApp, String("LoRaMesherApp")) {
+    LoRaMeshService(): MessageService(appPort::LoRaMesherApp, String("LoRaMesherApp")) {
         commandService = loraMesherCommandService;
     };
 

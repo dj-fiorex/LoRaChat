@@ -47,7 +47,7 @@ float Dht22::readValueWait(uint8_t retries) {
 }
 
 String Dht22::getJSON(DataMessage* message) {
-    Dht22Message* temperatureMessage = (Dht22Message*)message;
+    Dht22Message* temperatureMessage = (Dht22Message*) message;
 
     DynamicJsonDocument doc(1024);
 
@@ -66,7 +66,7 @@ void Dht22::createDht22Task() {
         dht22Loop,
         "Dht22 Task",
         4096,
-        (void*)1,
+        (void*) 1,
         2,
         &dht22_TaskHandle);
     if (res != pdPASS) {
@@ -104,7 +104,7 @@ void Dht22::dht22Loop(void*) {
 
 void Dht22::sendDht22Readings(float temperature, float humidity, float pression) {
     Dht22Message* message = getDht22ReadingsForSend(temperature, humidity, pression);
-    MessageManager::getInstance().sendMessage(messagePort::MqttPort, (DataMessage*)message);
+    MessageManager::getInstance().sendMessage(messagePort::MqttPort, (DataMessage*) message);
     delete message;
 }
 

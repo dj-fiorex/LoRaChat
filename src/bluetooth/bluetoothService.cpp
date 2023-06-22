@@ -9,7 +9,7 @@ void BluetoothService::createBluetoothTask() {
         BluetoothLoop,
         "Bluetooth Task",
         4096,
-        (void*)1,
+        (void*) 1,
         2,
         &bluetooth_TaskHandle);
     if (res != pdPASS) {
@@ -157,12 +157,12 @@ void BluetoothService::loop() {
 }
 
 void BluetoothService::processReceivedMessage(messagePort port, DataMessage* message) {
-    BluetoothMessage* bluetoothMessage = (BluetoothMessage*)message;
+    BluetoothMessage* bluetoothMessage = (BluetoothMessage*) message;
     switch (bluetoothMessage->type) {
-    case BluetoothMessageType::bluetoothMessage:
-        writeToBluetooth(Helper::uint8ArrayToString(bluetoothMessage->message, bluetoothMessage->getPayloadSize()));
-        break;
-    default:
-        break;
+        case BluetoothMessageType::bluetoothMessage:
+            writeToBluetooth(Helper::uint8ArrayToString(bluetoothMessage->message, bluetoothMessage->getPayloadSize()));
+            break;
+        default:
+            break;
     }
 }
